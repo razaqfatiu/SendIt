@@ -7,14 +7,15 @@ const userGetController = require('../controller/userGetContoller');
 const userPostController = require('../controller/userPostController');
 // GET home page.
 
-const ensureAuthenticated = (req, res, next) => {
-	// if (req.isAuthenticated()) {
-	// 	return next();
-	// }
-	// res.redirect('/login');
-}
+// const ensureAuthenticated = (req, res, next) => {
+// if (req.isAuthenticated()) {
+// 	return next();
+// }
+// res.redirect('/login');
+// }
 
-router.get('/', ensureAuthenticated, userGetController.getIndex);
+router.get('/', /*ensureAuthenticated,*/ userGetController.getIndex);
+router.post('/', userPostController.parcelPost);
 
 router.get('/login', userGetController.getLogin);
 

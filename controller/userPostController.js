@@ -1,5 +1,22 @@
 const User = require('../models/users');
-
+const Parcel = require('../models/parcel')
+exports.parcelPost = (req, res) => {
+    const parcel = {
+        parcelname: req.body.parcelname,
+        weight: req.body.weight,
+        from: req.body.from,
+        deliverto: req.body.to,
+        message: req.body.message
+    }
+    Parcel.sync().then(() => {
+        Parcel.create(parcel, (err, user) => {
+            if (err) throw (err);
+            else {
+                console.log(user);
+            }
+        });
+    })
+}
 exports.postSignup = (req, res) => {
     const name = req.body.username;
     const email = req.body.email;
